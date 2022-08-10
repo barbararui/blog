@@ -36,7 +36,7 @@ function atualiza(string $entidade, array $dados, array $criterio = []) : bool
 {
     $retorno = false;
 
-    foreach ($dado as $campo => $dado)
+    foreach ($dados as $campo => $dado)
     {
         $coringa_dados[$campo] = '?';
         $tipo[] = gettype($dado) [0];
@@ -45,11 +45,11 @@ function atualiza(string $entidade, array $dados, array $criterio = []) : bool
 
     foreach ($criterio as $expressao)
     {
-        $dado = expressao[count($expressao) -1];
+        $dado = $expressao[count($expressao) -1];
 
         $tipo[] = gettype($dado) [0];
         $expressao[count($expressao) - 1] = '?';
-        $coringa_criterio[] - $expressao;
+        $coringa_criterio[] = $expressao;
 
         $nome_campo = (count($expressao) < 4) ? $expressao[0] : $expressao[1];
 
@@ -127,7 +127,7 @@ function deleta(string $entidade, array $criterio = []) : bool
         eval($comando);
     }
 
-    msyqli_stmt_execute($stmt);
+    mysqli_stmt_execute($stmt);
 
     $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
 
@@ -186,7 +186,7 @@ string $ordem = null) : array
 
     mysqli_stmt_execute($stmt);
 
-    if($result - mysqli_stmt_get_result($stmt))
+    if($result = mysqli_stmt_get_result($stmt))
     {
         $retorno = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -202,3 +202,4 @@ string $ordem = null) : array
 
     return $retorno;
 }
+?>
