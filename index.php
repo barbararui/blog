@@ -13,6 +13,15 @@
                         include 'includes/topo.php';
                     ?>
                 </div>
+            </div>
+                <div class="row" style="min-height: 500px">
+                    <div class="col-md-12">
+                        <!--Menu // -->
+                        <?php
+                            include 'includes/menu.php';
+                        ?>
+                    </div>
+                </div>
                 <div class="col-md-10" style="padding-top: 50px;">
                     <!-- Conteúdo //-->
                     <h2>Página Inicial</h2>
@@ -22,7 +31,7 @@
                     ?>
                     <?php
                         require_once 'includes/funcoes.php';
-                        require_once 'core/conexao_mysql.php';
+                        require_once 'core/conexao_mysqli.php';
                         require_once 'core/sql.php';
                         require_once 'core/mysql.php';
 
